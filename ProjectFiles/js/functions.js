@@ -136,8 +136,11 @@ function create_countries_cities_filters( ) {
         RETURN-VALUE:
           none
   */
+<<<<<<< Updated upstream
 
 
+=======
+>>>>>>> Stashed changes
   
   function create_country( country) {
     const dom = document.createElement( "div");
