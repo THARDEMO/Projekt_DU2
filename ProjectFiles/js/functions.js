@@ -258,6 +258,8 @@ function update_programmes () {
 
   */
 
+  const updater = read_filters();
+  array_each( updater, create_programme);
 
 }
 
