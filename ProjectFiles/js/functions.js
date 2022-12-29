@@ -266,6 +266,9 @@ function update_programmes () {
       NO RETURN VALUE
 
   */
+
+  const updater = read_filters();
+  array_each( updater, create_programme);
   
 }
 
