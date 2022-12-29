@@ -210,6 +210,15 @@ function create_programme (programme) {
 
   */ 
 
+  const parent = document.querySelector( "#programmes");
+  const university_DOM_element = document.createElement( "div");
+  parent.append( university_DOM_element);
+  
+  university_DOM_element.innerHTML = `
+    <p>this need to be called in update programmes</p>
+  `;
+  
+
 }
 
 
