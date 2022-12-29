@@ -136,8 +136,6 @@ function create_countries_cities_filters( ) {
         RETURN-VALUE:
           none
   */
-
-
   
   function create_country( country) {
     const dom = document.createElement( "div");
