@@ -1,0 +1,84 @@
+Projekt DU3 -- Pseudocode "what to do"
+	-- inlämning 09/01/2023
+
+Files subject to change
+	-- functions.js // index.js } according to VG specifications
+	-- Index.css (cosmetic only)
+
+GitHub structure
+	-- reprository name = ProjektDU3_TeoHardemo
+	-- new branches for each function (added element in programme)
+
+
+Functions 
+	-- array_find (array, test_function)
+	 // returns the first element which satisfies the T_function
+
+	-- array_filter (array, test_function)
+	 // Returns array of all element that satisfies T_function
+
+	-- array_each (array, callback)
+	 // callback_F for each element in array, No return
+
+Data.js
+	// COUNTRIES = [
+				"id": 0,
+        			"name": "Spanien",
+        			"imagesNormal": [...],
+			   ],
+
+	// CITIES = [
+				"id": 0,
+        			"name": "Madrid",
+       			 "countryID": 0,
+        			"sun": 305,
+        			"imagesNormal": [...],	
+			]
+
+	// UNIVERSITIES = [
+					"id": 0,
+        				"name": "Academia Universitaria de Madrid",
+       				"cityID": 0	
+				]
+
+	// PROGRAMMES = [
+				"id": 0,
+        "entryGrades": [
+            6.78,
+            6.67,
+            6.55,
+            6.31,
+            6.22
+        ],
+        "exchangeStudents": 6,
+        "languageID": 1,
+        "levelID": 3,
+        "localStudents": 21,
+        "name": "Engineering and Sustainability",
+        "subjectID": 1,
+        "successRate": [
+            62,
+            58,
+            56,
+            54,
+            53
+        ],
+        "universityID": 0
+				]
+
+	// SUBJECTS = [
+				"id": 0,
+				"name": "matematik",
+			  ]
+
+	// LANGUAGES [
+			       "id": 0,
+       			 "name": "Spanska",
+       			 "flag": "spain.png"				
+			 ]
+
+	// LEVELS [
+			 "id": 1,
+        		 "name": "Bachelor"
+		    ]
+
