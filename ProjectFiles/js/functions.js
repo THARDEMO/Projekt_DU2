@@ -19,6 +19,7 @@ function click_filter_element (event) {
 
   */
   event.target.classList.toggle( "selected");
+  update_programmes();
 }
 
 
@@ -136,11 +137,6 @@ function create_countries_cities_filters( ) {
         RETURN-VALUE:
           none
   */
-<<<<<<< Updated upstream
-
-
-=======
->>>>>>> Stashed changes
   
   function create_country( country) {
     const dom = document.createElement( "div");
@@ -241,6 +237,38 @@ function create_programme (programme) {
     NO RETURN VALUE
 
   */ 
+  let programmeUlReference = document.querySelector( "#programmes > ul");
+  let universityDOM = document.createElement( "div");
+  universityDOM.classList.add( "programme");
+  programmeUlReference.append( universityDOM);
+
+  const university = programme.universityID;
+  
+  let city_id = UNIVERSITIES[ university].cityID;
+  const city = CITIES[ city_id].name;
+
+  let country_id = CITIES[ city_id].countryID;
+  const country = COUNTRIES[ country_id].name;
+
+  const language = programme.languageID;
+  const level = programme.levelID - 1;
+  const subject = programme.subjectID; 
+
+
+  console.log( programme);
+  universityDOM.innerHTML = `
+    <div>
+      <div>${ programme.name}</div>
+      <div>${ UNIVERSITIES[ university].name}</div>
+      <div>${ city}, ${ country}</div> 
+      <div>${ LEVELS[ level].name}, ${ SUBJECTS[ subject].name}, ${ LANGUAGES[ language].name}</div>
+    </div>
+    
+    <div class="more_info"></div>
+    <div class="bottom_programme">${ city}, sun-index: ${ CITIES[ city_id].sun}</div>
+  `;
+  universityDOM.style.backgroundImage = CITIES[ city_id].imagesNormal[0]; 
+  // ( CITIES[ city_id].imagesNormal[0]);
 
 }
 
@@ -262,8 +290,24 @@ function update_programmes () {
       NO RETURN VALUE
 
   */
+  const parent = document.querySelector( "#programmes > ul");
+ 
+  parent.innerHTML = ``;
+ 
+  let array = [];
+  array = read_filters();
 
+  array_each( array, create_programme);
 
+  if( array.length !== 0) {
+    document.querySelector( "#programme > p").style.display = "none";
+  } else {
+    document.querySelector( "#programmes > p").style.display = "inline";
+  }
+
+//  const university_DOM_element = document.createElement( "ul");
+//  parent.append( university_DOM_element);
+//  university_DOM_element.classList.add( "programme"); 
 }
 
 
