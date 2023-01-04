@@ -111,7 +111,7 @@ function toggle_cities (event) {
 //            create_countries_cities_filters, create_country and create_city
 function create_countries_cities_filters( ) {
    // create_countries_cities_filters
-  /*    ARGUMENT:
+  /*    ARGUMENT: "no controls are made of the aruments"
           The functions does not recieve any arguments.
  
         SIDE-EFFECTS:
@@ -121,14 +121,14 @@ function create_countries_cities_filters( ) {
           none
   */
   // create_country
-  /*    ARGUMENT:
+  /*    ARGUMENT: "no controls are made of the aruments"
           country( object): One of the objects from COUNTRIES.
        
         SIDE-EFFECTS:
           the function creates a HTML-element inside "#country_filter > ul", the element contains the name of the country and a li of cities which exists in the country. The element is assigned the id based on the country.id.
   */
   // create_city
-  /*    ARGUMENT:
+  /*    ARGUMENT: "no controls are made of the aruments"
           city( array): one of the citys from cities (local).
  
         SIDE-EFFECTS:
@@ -212,16 +212,33 @@ function create_language_filter () {
   array_each(LANGUAGES, create_element);
 }
 
+// create_modular_filter
+/*    ARGUMENT: "no controls are made of the aruments"
+        the function recieves TWO arguments, (DATABASE) --> one array from database.js (target) --> string of the targeted filter_element
+
+      SIDE-EFFECTS:
+        the function initiates array_each with the parameter DATABASE and the the callback for each iteration/array[index] is create_modular_filters
+ 
+      RETURN-VALUE:
+        none
+*/
+// create_modular_filters
+/*    ARGUMENT: "no controls are made of the arguments"
+        the function recieves a object from each iteration of the array_each initiated in create_modular_filter
+      SIDE-EFFECTS:
+      RETURN-VALUE:
+
+*/
 function create_modular_filter( DATABASE, target) {
-  function create_modular_filters( target) {
-    const dom = create_temp_element({
+  function modular_filter_element( object) {
+    const dom = create_filter_element({
       parent: document.querySelector(`#${target}_filter > ul`),
       class: "selected",
-      textContent: target.name,
+      textContent: object.name,
     });
-    dom.dataset.id = target.id;
+    dom.dataset.id = object.id;
   }
-  array_each( DATABASE, create_modular_filters( target));
+  array_each( DATABASE, modular_filter_element);
 }
 
 
@@ -279,7 +296,9 @@ function create_programme (programme) {
     <div class="more_info"></div>
     <div class="bottom_programme">${ city}, sun-index: ${ CITIES[ city_id].sun}</div>
   `;
-  // universityDOM.style.backgroundImage = CITIES[ city_id].imagesNormal[0]; 
+  
+  let image = CITIES[ city_id].imagesNormal[0];
+  universityDOM.style.backgroundImage = CITIES[ city_id].imagesNormal[0]; 
   // // ( CITIES[ city_id].imagesNormal[0]);
 
 }

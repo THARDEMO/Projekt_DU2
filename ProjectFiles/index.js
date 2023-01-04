@@ -19,9 +19,9 @@
 // create_subjects_filter();
 // create_language_filter();
 
-create_modular_filter( LEVELS, level);
-create_modular_filter( SUBJECTS, subject);
-create_modular_filter( LANGUAGES, language);
+create_modular_filter( LEVELS, "level");
+create_modular_filter( SUBJECTS, "subject");
+create_modular_filter( LANGUAGES, "language");
 create_countries_cities_filters();
 
 // Add Interaction of search field button
