@@ -212,6 +212,18 @@ function create_language_filter () {
   array_each(LANGUAGES, create_element);
 }
 
+function create_modular_filter( DATABASE, target) {
+  function create_modular_filters( target) {
+    const dom = create_temp_element({
+      parent: document.querySelector(`#${target}_filter > ul`),
+      class: "selected",
+      textContent: target.name,
+    });
+    dom.dataset.id = target.id;
+  }
+  array_each( DATABASE, create_modular_filters( target));
+}
+
 
 // G / VG (see details in specification)
 // CODE according to specifications
@@ -267,13 +279,8 @@ function create_programme (programme) {
     <div class="more_info"></div>
     <div class="bottom_programme">${ city}, sun-index: ${ CITIES[ city_id].sun}</div>
   `;
-<<<<<<< Updated upstream
-  universityDOM.style.backgroundImage = CITIES[ city_id].imagesNormal[0]; 
-  // ( CITIES[ city_id].imagesNormal[0]);
-=======
   // universityDOM.style.backgroundImage = CITIES[ city_id].imagesNormal[0]; 
   // // ( CITIES[ city_id].imagesNormal[0]);
->>>>>>> Stashed changes
 
 }
 
@@ -305,11 +312,7 @@ function update_programmes () {
   array_each( array, create_programme);
 
   if( array.length !== 0) {
-<<<<<<< Updated upstream
-    document.querySelector( "#programme > p").style.display = "none";
-=======
     document.querySelector( "#programmes > p").style.display = "none";
->>>>>>> Stashed changes
   } else {
     document.querySelector( "#programmes > p").style.display = "inline";
   }
