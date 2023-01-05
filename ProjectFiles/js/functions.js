@@ -102,6 +102,21 @@ function toggle_cities (event) {
     NO RETURN VALUE
 
   */
+ let madrid_filter_element = document.querySelector( "#country_0 > ul > li")
+ let all_city_filter_elements = document.querySelectorAll( "#country_filter > ul > div > .filter_list > li");
+ 
+ 
+ if( madrid_filter_element.className === "selected") {
+  for( let i = 0; i < all_city_filter_elements.length; i++) {
+    all_city_filter_elements[ i].classList.remove( "selected");
+  }
+} else {
+   for( let i = 0; i < all_city_filter_elements.length; i++) {
+     all_city_filter_elements[ i].classList.add( "selected");
+   }
+}
+
+update_programmes()
 
 }
 
@@ -335,21 +350,14 @@ function update_programmes () {
   } else {
     document.querySelector( "#programmes > p").style.display = "inline";
   }
-
-  // random images top
-  /* get random number between 0 & 32 
-      target key imagesNormal --> use array_random_element to get random image fron list
-      style divs inside #top_images with style.backgroundImage = `url('media/geo_images/${ temp }')`;*/
-
-      
-      
-      for( let i = 1; i <= 3; i++) {
-        let top_images_container = document.querySelector( `#top_images > div:nth-child(${ i})`);
-        
-        let top_image_first_array = CITIES[ get_random_number( 32)].imagesNormal;
-        let top_image_first = array_random_element( top_image_first_array); 
-        
-        top_images_container.style.backgroundImage = `url('media/geo_images/${top_image_first}')`;
+    
+  for( let i = 1; i <= 3; i++) {
+    let top_images_container = document.querySelector( `#top_images > div:nth-child(${ i})`);
+    
+    let top_image_first_array = CITIES[ get_random_number( 32)].imagesNormal;
+    let top_image_first = array_random_element( top_image_first_array); 
+    
+    top_images_container.style.backgroundImage = `url('media/geo_images/${top_image_first}')`;
   }
 }
 
