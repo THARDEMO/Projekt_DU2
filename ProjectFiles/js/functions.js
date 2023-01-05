@@ -172,7 +172,7 @@ function create_countries_cities_filters( ) {
 }
 
 
-// G
+// G *
 // ABSTRACT AND WRITE SPECIFICATION
 //    As you can see, all three functions below do basically the same thing.
 //    Abstract them to one function, and write the specification of that function.
@@ -222,12 +222,15 @@ function create_language_filter () {
       RETURN-VALUE:
         none
 */
-// create_modular_filters
+// modular_filter_element
 /*    ARGUMENT: "no controls are made of the arguments"
-        the function recieves a object from each iteration of the array_each initiated in create_modular_filter
-      SIDE-EFFECTS:
-      RETURN-VALUE:
+        the function recieves a object from each iteration of the array_each initiated in create_modular_filter.
 
+      SIDE-EFFECTS:
+        the function creates a new DOM-element through the function create_filter_element({ OBJECT }) the object keys are parent --> uses the parameter "target" to find the right #"element"_filter, class --> "string with the class", textContent --> the iterations objects key = name
+
+      RETURN-VALUE:
+        none
 */
 function create_modular_filter( DATABASE, target) {
   function modular_filter_element( object) {
@@ -304,7 +307,7 @@ function create_programme (programme) {
 }
 
 
-// G
+// G *
 // CODE according to the specification
 function update_programmes () {
 
@@ -336,13 +339,10 @@ function update_programmes () {
     document.querySelector( "#programmes > p").style.display = "inline";
   }
 
-//  const university_DOM_element = document.createElement( "ul");
-//  parent.append( university_DOM_element);
-//  university_DOM_element.classList.add( "programme"); 
 }
 
 
-// G
+// G *
 // WRITE SPECIFICATION
 // You must understand how this function works. There will be questions about it
 // in the code review (kodredovisning)
@@ -350,6 +350,38 @@ function update_programmes () {
 // Optional VG: Which parts of the function's code could be abstracted?
 //              Implement it
 function read_filters () {
+
+  // read_filters 
+  /*  ARGUMENT: "no controls are made of the aruments"
+        the function does not recieve any arguments.
+
+      SIDE-EFFECTS:
+        the function checks all "filter_elements" and sorts those with class ".selected" in a new array. The function compares in many steps to determine which programmes are supposed to be viewed on the "programme section". 
+        
+           HOW IT WORKS:
+            step 1 --> the function saves all selected cities, these are each looped through array_each and the callback uses parseInt to convert the dataset.id to a usable value. These are saved in an array.
+
+            step 2 --> the function loops through each of the city Id's for each iteration/Id-index the function compares all the UNIVERSETIES cityID's if if the id's macth the university gets pushed into a new array.
+
+            step 3 --> the new array of universitys are looped though using array_each, the callback function compares all universitys id's to all PROGRAMMES id's. if the id's match the programme gets pushed into a new array.
+
+            step 4 --> the function saves all selected levels, these are each looped through array_each and the callback uses parseInt to convert the dataset id to a usable value. these are saved in an array.
+
+            step 5 --> the function filters the newly created array of ".selected" programmes using array_filter, if the programmes levelID is the same as one of the ".selected" levels ids they are returned and pushed into the filtered array, if not they are "filtered out" by not being returned.
+            
+            step 6 --> the function saves all selected languages, these are each looped through array_each and the callback uses parseInt to convert the dataset id to a usable value. these are saved in an array.
+
+            step 7 -->  the function filters the newly created array of ".selected" programmes using array_filter, if the programmes languageID is the same as one of the ".selected" languages ids they are returned and pushed into the filtered array, if not they are "filtered out" by not being returned.
+
+            step 8 --> the function saves all selected subjects, these are each looped through array_each and the callback uses parseInt to convert the dataset id to a usable value. these are saved in an array.
+
+            step 9 --> the function filters the newly created array of ".selected" programmes using array_filter, if the programmes subjectID is the same as one of the ".selected" subjects ids they are returned and pushed into the filtered array, if not they are "filtered out" by not being returned.
+
+            step 10 --> the function checks whats written inn the search field, if the field contains an empty string the function dosent enter the test function, if it contains a string the function filters the newly created array of ".selected" programmes using array_filter, if the programmes name is the same as the string from the search field they are returned and pushed into the filtered array, if not they are "filtered out" by not being returned.
+          
+      RETURN-VALUE:
+        the function returns the filtered programmes
+  */
   
   const city_selected_dom = document.querySelectorAll( "#country_filter li.selected");
 
