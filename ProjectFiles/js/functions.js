@@ -18,6 +18,7 @@ function click_filter_element (event) {
     NO RETURN VALUE
 
   */
+  event.stopPropagation()
   event.target.classList.toggle( "selected");
   update_programmes();
 }
@@ -65,7 +66,7 @@ function create_filter_element (data) {
 
 // VG
 // CODE according to specification
-function add_group_toggling (filter_container_dom) {
+function add_group_toggling( filter_container_dom) {
 
   /*
     ARGUMENT
@@ -81,13 +82,30 @@ function add_group_toggling (filter_container_dom) {
     NO RETURN VALUE
 
   */
+  filter_container_dom.addEventListener( "click", toggle_filter_container);
+  let ruling_element_selector = filter_container_dom.querySelector( "ul > li");
+  let all_filter_container_elements = filter_container_dom.querySelectorAll( "ul > li");
+
+  function toggle_filter_container( event) {
+    if( ruling_element_selector.className === "selected") {
+      for( let i = 0; i < all_filter_container_elements.length; i++) {
+        all_filter_container_elements[ i].classList.remove( "selected");
+      }
+    } else {
+       for( let i = 0; i < all_filter_container_elements.length; i++) {
+         all_filter_container_elements[ i].classList.add( "selected");
+       }
+    }
+
+    update_programmes();
+  }
   
 }
 
 
 // VG
 // CODE according to specifications
-function toggle_cities (event) {
+function toggle_cities( event) {
 
   /*
 
@@ -102,21 +120,20 @@ function toggle_cities (event) {
     NO RETURN VALUE
 
   */
- let madrid_filter_element = document.querySelector( "#country_0 > ul > li")
- let all_city_filter_elements = document.querySelectorAll( "#country_filter > ul > div > .filter_list > li");
+  let madrid_filter_element = document.querySelector( "#country_0 > ul > li")
+  let all_city_filter_elements = document.querySelectorAll( "#country_filter > ul > div > .filter_list > li");
  
- 
- if( madrid_filter_element.className === "selected") {
-  for( let i = 0; i < all_city_filter_elements.length; i++) {
-    all_city_filter_elements[ i].classList.remove( "selected");
-  }
-} else {
-   for( let i = 0; i < all_city_filter_elements.length; i++) {
-     all_city_filter_elements[ i].classList.add( "selected");
-   }
+  if( madrid_filter_element.className === "selected") {
+    for( let i = 0; i < all_city_filter_elements.length; i++) {
+      all_city_filter_elements[ i].classList.remove( "selected");
+    }
+    } else {
+      for( let i = 0; i < all_city_filter_elements.length; i++) {
+      all_city_filter_elements[ i].classList.add( "selected");
+    }
 }
 
-update_programmes()
+update_programmes();
 
 }
 
