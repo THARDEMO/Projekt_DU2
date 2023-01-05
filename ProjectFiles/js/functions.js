@@ -286,10 +286,8 @@ function create_programme (programme) {
   const level = programme.levelID - 1;
   const subject = programme.subjectID; 
 
-
-  console.log( programme);
   universityDOM.innerHTML = `
-    <div>
+    <div >
       <div>${ programme.name}</div>
       <div>${ UNIVERSITIES[ university].name}</div>
       <div>${ city}, ${ country}</div> 
@@ -300,10 +298,11 @@ function create_programme (programme) {
     <div class="bottom_programme">${ city}, sun-index: ${ CITIES[ city_id].sun}</div>
   `;
   
-  let image = CITIES[ city_id].imagesNormal[0];
-  universityDOM.style.backgroundImage = CITIES[ city_id].imagesNormal[0]; 
-  // // ( CITIES[ city_id].imagesNormal[0]);
+  let city_images_array = CITIES[ city_id].imagesNormal;
+  let city_image = array_random_element( city_images_array);
 
+  let programme_div = document.querySelector( "#programmes > ul > div:last-child");
+  programme_div.style.backgroundImage = `url('media/geo_images/${city_image}')`; 
 }
 
 
