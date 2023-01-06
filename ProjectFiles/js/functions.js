@@ -64,7 +64,7 @@ function create_filter_element (data) {
 
 
 
-// VG
+// VG *
 // CODE according to specification
 function add_group_toggling( filter_container_dom) {
 
@@ -103,7 +103,7 @@ function add_group_toggling( filter_container_dom) {
 }
 
 
-// VG
+// VG *
 // CODE according to specifications
 function toggle_cities( event) {
 
@@ -319,22 +319,54 @@ function create_programme (programme) {
   const subject = programme.subjectID; 
 
   universityDOM.innerHTML = `
-    <div >
-      <div>${ programme.name}</div>
+    <div>
+      <div><strong>${ programme.name}</strong></div>
       <div>${ UNIVERSITIES[ university].name}</div>
       <div>${ city}, ${ country}</div> 
       <div>${ LEVELS[ level].name}, ${ SUBJECTS[ subject].name}, ${ LANGUAGES[ language].name}</div>
     </div>
-    
-    <div class="more_info"></div>
-    <div class="bottom_programme">${ city}, sun-index: ${ CITIES[ city_id].sun}</div>
-  `;
-  
+  `
+
+  let more_information = document.createElement( "div");
+  more_information.classList.add( "more_info");
+  universityDOM.appendChild( more_information);
+
+  more_information.addEventListener( "click", show_more_programmes);
+  function show_more_programmes( event) {
+    more_information.style.display = "none";
+    bottom_information.remove( );
+    universityDOM.classList.toggle( "show_more");
+
+    let more_info_container = document.createElement( "div");
+    more_info_container.classList.add( "more_info");
+    universityDOM.appendChild( more_info_container);
+
+    more_info_container.innerHTML = `
+    <div>Average entry grade: ${array_average( programme.entryGrades)}</div>
+    <div>Success rate: ${array_average( programme.successRate)}%</div>
+    <div>Exchange ratio: ${programme.exchangeStudents}/${programme.localStudents}</div>
+    `
+    universityDOM.appendChild( bottom_information);
+
+    more_info_container.addEventListener( "click", remove_more_info);
+    function remove_more_info( event) {
+      more_info_container.remove( );
+      more_information.style.display = "block";
+      universityDOM.classList.toggle( "show_more");
+    }
+  }
+
+  let bottom_information = document.createElement( "div");
+  bottom_information.textContent = (`${ city}, sun-index: ${ CITIES[ city_id].sun}`);
+  bottom_information.classList.add( "bottom_programme");
+  universityDOM.appendChild( bottom_information);
+
   let city_images_array = CITIES[ city_id].imagesNormal;
   let city_image = array_random_element( city_images_array);
-
   let programme_div = document.querySelector( "#programmes > ul > div:last-child");
-  programme_div.style.backgroundImage = `url('media/geo_images/${city_image}')`; 
+  programme_div.style.backgroundImage = `url('media/geo_images/${ city_image}')`; 
+  
+
 }
 
 
