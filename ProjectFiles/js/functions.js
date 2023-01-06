@@ -1,6 +1,5 @@
 
-// G *
-// CODE According to specification
+
 function click_filter_element( event) {
 
   /*
@@ -23,9 +22,6 @@ function click_filter_element( event) {
   update_programmes();
 }
 
-
-// G *
-// CODE according to specification
 function create_filter_element( data) {
 
   /*
@@ -62,10 +58,6 @@ function create_filter_element( data) {
   return newDomElement;
 }
 
-
-
-// VG *
-// CODE according to specification
 function add_group_toggling( filter_container_dom) {
 
   /*
@@ -102,9 +94,6 @@ function add_group_toggling( filter_container_dom) {
   
 }
 
-
-// VG *
-// CODE according to specifications
 function toggle_cities( event) {
 
   /*
@@ -137,10 +126,6 @@ update_programmes();
 
 }
 
-
-// WRITE SPECIFICATION *
-// ATTENTION: You need to write the specification of all three functions:
-//            create_countries_cities_filters, create_country and create_city
 function create_countries_cities_filters( ) {
    // create_countries_cities_filters
   /*    ARGUMENT: "no controls are made of the aruments"
@@ -204,10 +189,6 @@ function create_countries_cities_filters( ) {
 }
 
 
-// G *
-// ABSTRACT AND WRITE SPECIFICATION
-//    As you can see, all three functions below do basically the same thing.
-//    Abstract them to one function, and write the specification of that function.
 function create_levels_filter( ) {
   function create_level (level) {
     const dom = create_filter_element({
@@ -219,7 +200,6 @@ function create_levels_filter( ) {
   }
   array_each(LEVELS, create_level);
 }
-// Create Subjects Filter
 function create_subjects_filter( ) {
   function create_subject (subject) {
     const dom = create_filter_element({
@@ -231,7 +211,6 @@ function create_subjects_filter( ) {
   }
   array_each(SUBJECTS, create_subject);
 }
-// Create Search Field
 function create_language_filter( ) {
   function create_element (data) {
     const dom = create_filter_element({
@@ -276,31 +255,8 @@ function create_modular_filter( DATABASE, target) {
   array_each( DATABASE, modular_filter_element);
 }
 
-
-// G / VG (see details in specification)
-// CODE according to specifications
 function create_programme( programme) {
   
-  /*
-
-    ARGUMENT
-      programme (object): One of the objects from PROGRAMMES
-
-    SIDE-EFFECTS
-      This function creates the HTML-element that contains all the information
-      about one programme, as seen in the video / image.
-      
-      VG: The background image is a random image from among the images of the city
-          in which the programme is (via the university)
-      G:  No background image required.
-
-
-      VG: The "see more" interaction must be included.
-      G:  The "see more" element is not required. And that information needs not be in place.
-
-    NO RETURN VALUE
-
-  */ 
   let programmeUlReference = document.querySelector( "#programmes > ul");
   let universityDOM = document.createElement( "div");
   universityDOM.classList.add( "programme");
@@ -369,24 +325,8 @@ function create_programme( programme) {
 
 }
 
-
-// G *
-// CODE according to the specification
 function update_programmes( ) {
 
-  /*
-      NO ARGUMENTS
-
-      SIDE EFFECTS
-        This function updates the programmes shown on the page according to
-        the current filter status (which filter elements are selected / unselected).
-        It uses the function read_filters to know which programmes need to be included.
-
-        VG: The top images (header) need to be updated here
-
-      NO RETURN VALUE
-
-  */
   const parent = document.querySelector( "#programmes > ul");
   parent.innerHTML = ``;
   
@@ -410,14 +350,6 @@ function update_programmes( ) {
   }
 }
 
-
-// G *
-// WRITE SPECIFICATION
-// You must understand how this function works. There will be questions about it
-// in the code review (kodredovisning)
-
-// Optional VG: Which parts of the function's code could be abstracted?
-//              Implement it
 function read_filters( ) {
 
   // read_filters 
