@@ -1,7 +1,7 @@
 
 // G *
 // CODE According to specification
-function click_filter_element (event) {
+function click_filter_element( event) {
 
   /*
     ARGUMENTS
@@ -26,7 +26,7 @@ function click_filter_element (event) {
 
 // G *
 // CODE according to specification
-function create_filter_element (data) {
+function create_filter_element( data) {
 
   /*
     ARGUMENTS
@@ -208,7 +208,7 @@ function create_countries_cities_filters( ) {
 // ABSTRACT AND WRITE SPECIFICATION
 //    As you can see, all three functions below do basically the same thing.
 //    Abstract them to one function, and write the specification of that function.
-function create_levels_filter () {
+function create_levels_filter( ) {
   function create_level (level) {
     const dom = create_filter_element({
       parent: document.querySelector("#level_filter > ul"),
@@ -220,7 +220,7 @@ function create_levels_filter () {
   array_each(LEVELS, create_level);
 }
 // Create Subjects Filter
-function create_subjects_filter () {
+function create_subjects_filter( ) {
   function create_subject (subject) {
     const dom = create_filter_element({
       parent: document.querySelector("#subject_filter > ul"),
@@ -232,7 +232,7 @@ function create_subjects_filter () {
   array_each(SUBJECTS, create_subject);
 }
 // Create Search Field
-function create_language_filter () {
+function create_language_filter( ) {
   function create_element (data) {
     const dom = create_filter_element({
       parent: document.querySelector("#language_filter > ul"),
@@ -279,7 +279,7 @@ function create_modular_filter( DATABASE, target) {
 
 // G / VG (see details in specification)
 // CODE according to specifications
-function create_programme (programme) {
+function create_programme( programme) {
   
   /*
 
@@ -357,7 +357,7 @@ function create_programme (programme) {
   }
 
   let bottom_information = document.createElement( "div");
-  bottom_information.textContent = (`${ city}, sun-index: ${ CITIES[ city_id].sun}`);
+  bottom_information.textContent = (`${ city}, sun-index: ${ CITIES[ city_id].sun} (${ percenter( CITIES[ city_id].sun, 365)})%`);
   bottom_information.classList.add( "bottom_programme");
   universityDOM.appendChild( bottom_information);
 
@@ -372,7 +372,7 @@ function create_programme (programme) {
 
 // G *
 // CODE according to the specification
-function update_programmes () {
+function update_programmes( ) {
 
   /*
       NO ARGUMENTS
@@ -418,7 +418,7 @@ function update_programmes () {
 
 // Optional VG: Which parts of the function's code could be abstracted?
 //              Implement it
-function read_filters () {
+function read_filters( ) {
 
   // read_filters 
   /*  ARGUMENT: "no controls are made of the aruments"
